@@ -44,6 +44,7 @@ public class QueryCalcImpl implements QueryCalc {
     }
 
     private List<Pair<Double, Double>> getSortedTableCrossJoinTable(List<Pair<Double, Double>> table1, List<Pair<Double, Double>> table2) {
+        //Sorting with standard java libs provide Stable Order
         return StreamEx.of(table1)
                 .cross(table2)
                 .map(REDUCE_T2_CROSS_T3)
@@ -63,6 +64,7 @@ public class QueryCalcImpl implements QueryCalc {
     }
 
     private Map<Double, Double> getFullQueryResult(List<Pair<Double, Double>> table1, List<Pair<Double, Double>> table2) {
+        //LinkedHashMap provides ordered insert
         final Map<Double, Double> mapResult = new LinkedHashMap<>();
 
         for (Pair<Double, Double> iteratorT1 : table1) {
